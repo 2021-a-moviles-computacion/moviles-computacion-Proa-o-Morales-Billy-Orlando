@@ -51,10 +51,10 @@ class Empleado(
 ){
     override fun toString(): String {
         return "Nombre: ${nombre} \n" +
-                "RUC: ${dni} \n" +
+                "Cedula de Ciudadania: ${dni} \n" +
                 "Telefono: ${telefono} \n" +
-                "Fecha de apertura: ${fechaNacimiento} \n" +
-                "Capital ${sueldo} \n"
+                "Fecha de nacimiento: ${fechaNacimiento} \n" +
+                "Sueldo ${sueldo} \n"
     }
 }
 
