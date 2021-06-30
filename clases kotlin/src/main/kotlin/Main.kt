@@ -202,10 +202,6 @@ abstract  class  NumerosJava {
         numeroDos = dos
         println("inicializar las variables ")
     }
-
-
-
-
 }
 
 // clase abstacta en kotlin
