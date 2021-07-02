@@ -30,14 +30,15 @@ fun menu() {
             6 -> {
                 menuEmpleados()
             }
-            0 ->{
+            7 ->{
                 JOptionPane.showMessageDialog(null, "GRACIAS POR USAR CMS VUELVA PRONTO")
+
             }
             else -> {
                 JOptionPane.showMessageDialog(null, "Opcion seleccionada no existe")
             }
         }
-    } while (opcion != 0)
+    } while (opcion != 7)
 }
 
 fun menuEmpleados() {
@@ -64,9 +65,24 @@ fun menuEmpleados() {
             6 -> {
                 mostrarTodo()
             }
+            0 -> {
+                if( regresarMenuPrincipal() == true){
+                    menu()
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha seleccionado la opcion no, siga administradndo empleados")
+                }
+            }
             else -> {
                 JOptionPane.showMessageDialog(null, "Opcion seleccionada no existe")
             }
         }
     } while (opcion == 0)
+}
+
+fun regresarMenuPrincipal(): Boolean {
+    val opciones = arrayOf("Si", "No")
+    val respuesta = JOptionPane.showOptionDialog(null, "Esta seguro que desea regresar al menu principal ",
+        "Regresar Menu Principal",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0])
+    return respuesta == 0
 }

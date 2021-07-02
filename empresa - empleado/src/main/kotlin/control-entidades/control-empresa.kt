@@ -12,14 +12,14 @@ import javax.swing.JOptionPane
 
 fun stringMenuInicio(): String {
     return "     BIENVENIDO AL CMS (Company Managment System)      \n\n" +
-            "Seleccione las opciones:\n" +
+            "MENU DE OPCIONES:\n \n" +
             "1. Crear Empresa\n" +
             "2. Actualizar Empresa\n" +
             "3. Eliminar Empresa\n" +
             "4. Buscar Empresa por atributo\n" +
             "5. Listar todas las Empresas\n" +
             "6. Gestionar empleados\n" +
-            "0. Salir\n"
+            "7. Salir\n"
 }
 
 fun crearEmpresaControl() {

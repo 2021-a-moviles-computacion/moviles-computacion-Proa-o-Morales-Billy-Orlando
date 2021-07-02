@@ -13,7 +13,7 @@ import javax.swing.JOptionPane
 
 fun stringMenuInicioEstudiante(): String {
     return "      GESTION DE EMPLEADOS      \n\n" +
-            "Seleccione las opciones:\n" +
+            "MENU DE OPCIONES :\n \n" +
             "1. Crear empleado\n" +
             "2. Actualizar empleado\n" +
             "3. Eliminar empleado\n" +
