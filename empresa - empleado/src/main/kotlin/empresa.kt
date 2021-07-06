@@ -55,6 +55,9 @@ fun editarEmpresaControl(
             "ruc" -> {
                 empresas[indice].ruc = nuevoValor
             }
+            "telefono" -> {
+                empresas[indice].telefono = nuevoValor.toInt()
+            }
             else -> {
                 JOptionPane.showMessageDialog(null, "No se encontro la empresa  ${datoEditar}")
             }

@@ -1,32 +1,24 @@
 [
   {
-    "ruc": "1720540879001",
-    "razonSocial": "KMSOLUTIONS",
-    "telefono": 2298765,
-    "fechaInicio": "12-08-1976",
-    "capital": 45000.0,
-    "empleados": [
-      {
-        "dni": "1725969503",
-        "nombre": "Nathaly Mafla",
-        "telefono": "983974092",
-        "fechaNacimiento": "17-06-1998",
-        "activo": true
-      }
-    ]
-  },
-  {
     "ruc": "1725996365001",
     "razonSocial": "PC REPAIRS DP",
     "telefono": 2497782,
     "fechaInicio": "06-06-2019",
     "capital": 1000.0,
+    "empleados": []
+  },
+  {
+    "ruc": "1720540879",
+    "razonSocial": "CHIFA JARDIN CHINA",
+    "telefono": 3441319,
+    "fechaInicio": "12-09-2000",
+    "capital": 40000.0,
     "empleados": [
       {
-        "dni": "1725996365",
-        "nombre": "Billy Proaño",
+        "dni": "11708394000",
+        "nombre": "Pepito Jimenez",
         "telefono": "2497782",
-        "fechaNacimiento": "01-10-1997",
+        "fechaNacimiento": "01-10-1980",
         "activo": true
       }
     ]
