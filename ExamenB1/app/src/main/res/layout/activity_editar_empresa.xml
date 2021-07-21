@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarEmpresa">
+
+    <EditText
+        android:id="@+id/txt_id_empresa_editar"
+        android:layout_width="169dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="@string/empresa_id"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_ruc_editar"
+        android:layout_width="311dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/empresa_ruc"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_id_empresa_editar"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintStart_toStartOf="@+id/txt_id_empresa_editar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_id_empresa_editar" />
+
+    <EditText
+        android:id="@+id/txt_razon_social_editar"
+        android:layout_width="311dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/empresa_nombre"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_ruc_editar"
+        app:layout_constraintStart_toStartOf="@+id/txt_ruc_editar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ruc_editar" />
+
+    <EditText
+        android:id="@+id/txt_direccion_editar"
+        android:layout_width="311dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/empresa_direccion"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_razon_social_editar"
+        app:layout_constraintStart_toStartOf="@+id/txt_razon_social_editar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_razon_social_editar" />
+
+    <EditText
+        android:id="@+id/txt_telefono_editar"
+        android:layout_width="311dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/empresa_telefono"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_direccion_editar"
+        app:layout_constraintStart_toStartOf="@+id/txt_direccion_editar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_direccion_editar" />
+
+    <ImageView
+        android:id="@+id/img_view_guardar_editar"
+        android:layout_width="64dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_view_cancelar_editar"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_editar"
+        app:srcCompat="@mipmap/save" />
+
+    <ImageView
+        android:id="@+id/img_view_cancelar_editar"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_editar"
+        app:srcCompat="@mipmap/cancel" />
+</androidx.constraintlayout.widget.ConstraintLayout>

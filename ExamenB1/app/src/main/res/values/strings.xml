@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">EXAMEN01</string>
+    <string name="cms_inicio_texto">CMS Company Managment Systems</string>
+    <string name="empresas_titulo">EMPRESAS </string>
+    <string name="texto_boton_nuevo"> NUEVO / CREAR  </string>
+    <string name="empleado_titulo"> EMPLEADOS  </string>
+    <string name="empresa_id"> ID Empresa  </string>
+    <string name="empresa_ruc"> RUC  </string>
+    <string name="empresa_nombre"> Razon Social  </string>
+    <string name="empresa_direccion"> Dirección  </string>
+    <string name="empresa_telefono"> Telefono  </string>
+    <string name="cantidad_empleados"> 0  </string>
+    <string name="empleado_dni"> DNI  </string>
+    <string name="empleado_empresa"> Nombre Empresa </string>
+    <string name="empleado_nombre"> Nombre  </string>
+    <string name="empleado_fec_nac"> Fecha NAcimiento DD-MM-AAAA  </string>
+    <string name="empleado_telefono"> Telefono  </string>
+</resources>
