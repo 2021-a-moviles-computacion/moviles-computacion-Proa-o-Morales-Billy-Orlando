@@ -32,11 +32,13 @@ class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<Contact
         val nombreTextView: TextView
         val contenidoMensaje: TextView
         val imagenContacto: ImageView
+        val fecha: TextView
 
         init {
             nombreTextView = view.findViewById(R.id.txt_nombre_contacto)
             contenidoMensaje = view.findViewById(R.id.txt_mensaje)
             imagenContacto = view.findViewById(R.id.img_contacto)
+            fecha = view.findViewById(R.id.txt_fecha)
         }
 
 
@@ -44,6 +46,7 @@ class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<Contact
             nombreTextView.text = contacto.nombre
             contenidoMensaje.text = contacto.mensaje
             Picasso.get().load(contacto.imagen).into(imagenContacto)
+            fecha.text = contacto.fecha
         }
     }
 
