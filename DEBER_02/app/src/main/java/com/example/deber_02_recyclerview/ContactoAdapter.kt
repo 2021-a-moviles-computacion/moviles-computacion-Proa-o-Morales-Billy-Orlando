@@ -1,17 +1,21 @@
 package com.example.deber_02_recyclerview
 
+import android.content.Intent
 import android.view.LayoutInflater
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-
+import kotlin.math.abs
 
 
 class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<ContactoAdapter.ContactoHolder>() {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactoHolder {
@@ -27,18 +31,20 @@ class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<Contact
         return contacto.size
     }
 
-    inner class ContactoHolder(view: View):RecyclerView.ViewHolder(view){
+    inner class ContactoHolder(val view: View):RecyclerView.ViewHolder(view){
 
         val nombreTextView: TextView
         val contenidoMensaje: TextView
         val imagenContacto: ImageView
         val fecha: TextView
+        val contexto = view.context
 
         init {
             nombreTextView = view.findViewById(R.id.txt_nombre_contacto)
             contenidoMensaje = view.findViewById(R.id.txt_mensaje)
             imagenContacto = view.findViewById(R.id.img_contacto)
             fecha = view.findViewById(R.id.txt_fecha)
+
         }
 
 
@@ -47,7 +53,15 @@ class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<Contact
             contenidoMensaje.text = contacto.mensaje
             Picasso.get().load(contacto.imagen).into(imagenContacto)
             fecha.text = contacto.fecha
+            view.setOnClickListener {
+                Toast.makeText(view.context, "abriendo chate de ${contacto.nombre}", Toast.LENGTH_SHORT).show()
+                val itemExplicito = Intent(view.context, activity_chats::class.java)
+                itemExplicito.putExtra("contacto", contacto)
+                view.context.startActivity(itemExplicito)
+            }
         }
+
     }
+
 
 }

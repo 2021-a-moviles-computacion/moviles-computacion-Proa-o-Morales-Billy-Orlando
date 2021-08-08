@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_chats">
+
+    <TextView
+        android:id="@+id/txt_chat_nombre"
+        android:layout_width="209dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:hint="CONTACTO"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:translationY="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_chat_mensaje"
+        android:layout_width="374dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="28dp"
+        android:hint="mensaje"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="408dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="27dp"
+            android:layout_weight="1"
+            android:translationY="10dp"
+            tools:srcCompat="@drawable/chat" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="274dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Mensaje"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="31dp"
+            android:layout_height="21dp"
+            android:layout_weight="1"
+            android:translationY="13dp"
+            tools:srcCompat="@drawable/clip_de_papel" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:translationY="13dp"
+            tools:srcCompat="@drawable/microphone" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
