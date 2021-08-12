@@ -9,8 +9,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_chat"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="56dp"
+        android:layout_height="55dp"
         android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:translationX="10dp"
@@ -18,37 +18,34 @@
         app:civ_border_color="#FF000000"
         app:civ_border_width="0.5dp"
         app:layout_constraintEnd_toStartOf="@+id/txt_chat_nombre"
-        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_chat_nombre"
-        android:layout_width="194dp"
-        android:layout_height="42dp"
+        android:layout_width="132dp"
+        android:layout_height="24dp"
         android:layout_marginTop="28dp"
         android:hint="CONTACTO"
-        android:textAlignment="center"
-        android:textSize="34sp"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
         android:translationY="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_chat_mensaje"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:background="#E2FAC7"
-        android:hint="mensaje"
-        android:textAlignment="viewEnd"
-        android:textSize="20sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_chats"
+        android:layout_width="395dp"
+        android:layout_height="419dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_chat_nombre"
+        app:layout_constraintVertical_bias="0.707" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -66,7 +63,7 @@
             android:layout_width="60dp"
             android:layout_height="52dp"
             android:layout_weight="1"
-            android:backgroundTint="#191717"
+            android:backgroundTint="#FAF4F4"
             android:backgroundTintMode="src_over"
             android:translationY="10dp"
             tools:srcCompat="@drawable/chat" />
@@ -86,6 +83,7 @@
             android:layout_width="49dp"
             android:layout_height="37dp"
             android:layout_weight="1"
+            android:backgroundTint="#FAF4F4"
             android:translationY="13dp"
             tools:srcCompat="@drawable/clip_de_papel" />
 
@@ -94,6 +92,7 @@
             android:layout_width="33dp"
             android:layout_height="41dp"
             android:layout_weight="1"
+            android:backgroundTint="#FAF4F4"
             android:translationY="13dp"
             tools:srcCompat="@drawable/microphone" />
     </LinearLayout>

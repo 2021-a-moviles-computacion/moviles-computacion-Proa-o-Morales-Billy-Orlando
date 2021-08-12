@@ -54,10 +54,10 @@ class ContactoAdapter (val contacto:List<Contacto>):RecyclerView.Adapter<Contact
             Picasso.get().load(contacto.imagen).into(imagenContacto)
             fecha.text = contacto.fecha
             view.setOnClickListener {
-                Toast.makeText(view.context, "abriendo chate de ${contacto.nombre}", Toast.LENGTH_SHORT).show()
-                val itemExplicito = Intent(view.context, activity_chats::class.java)
+                Toast.makeText(contexto, "abriendo chate de ${contacto.nombre}", Toast.LENGTH_SHORT).show()
+                val itemExplicito = Intent(contexto, activity_chats::class.java)
                 itemExplicito.putExtra("contacto", contacto)
-                view.context.startActivity(itemExplicito)
+                contexto.startActivity(itemExplicito)
             }
         }
 
