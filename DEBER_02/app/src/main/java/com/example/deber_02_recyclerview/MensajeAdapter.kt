@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MensajeAdapter (val mensajes:List<Mensaje>): RecyclerView.Adapter<MensajeAdapter.MensajeHolder>() {
 
+    var mensajesEscitos = arrayListOf<Mensaje>()
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -33,7 +35,6 @@ class MensajeAdapter (val mensajes:List<Mensaje>): RecyclerView.Adapter<MensajeA
         init {
             mensajeEnviado = view.findViewById(R.id.txt_mensaje_enviado)
             mensajeRecibido = view.findViewById(R.id.txt_mensaje_recibido)
-
         }
 
         fun render(mensaje: Mensaje){

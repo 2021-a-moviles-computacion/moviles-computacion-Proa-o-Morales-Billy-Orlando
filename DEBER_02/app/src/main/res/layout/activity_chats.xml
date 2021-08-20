@@ -9,16 +9,16 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_chat"
-        android:layout_width="56dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="36dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:translationX="10dp"
         android:translationY="35dp"
         app:civ_border_color="#FF000000"
         app:civ_border_width="0.5dp"
         app:layout_constraintEnd_toStartOf="@+id/txt_chat_nombre"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,63 +38,47 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_chats"
-        android:layout_width="395dp"
-        android:layout_height="419dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_width="379dp"
+        android:layout_height="368dp"
+        android:layout_marginTop="40dp"
+        android:translationY="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_chat_nombre"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="52dp"
-            android:layout_weight="1"
-            android:backgroundTint="#FAF4F4"
-            android:backgroundTintMode="src_over"
-            android:translationY="10dp"
-            tools:srcCompat="@drawable/chat" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_chats"
+        app:layout_constraintVertical_bias="1.0">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="251dp"
+            android:id="@+id/txt_mensaje_chats"
+            android:layout_width="272dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="Mensaje"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:translationX="20dp" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="49dp"
-            android:layout_height="37dp"
+            android:id="@+id/btn_enviar"
+            android:layout_width="10dp"
+            android:layout_height="25dp"
             android:layout_weight="1"
-            android:backgroundTint="#FAF4F4"
-            android:translationY="13dp"
-            tools:srcCompat="@drawable/clip_de_papel" />
+            android:translationY="10dp"
+            app:srcCompat="@drawable/send" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="33dp"
-            android:layout_height="41dp"
-            android:layout_weight="1"
-            android:backgroundTint="#FAF4F4"
-            android:translationY="13dp"
-            tools:srcCompat="@drawable/microphone" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

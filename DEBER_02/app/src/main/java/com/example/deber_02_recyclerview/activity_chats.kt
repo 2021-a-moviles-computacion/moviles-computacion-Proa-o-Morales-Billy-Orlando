@@ -2,6 +2,8 @@ package com.example.deber_02_recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -39,8 +41,22 @@ class activity_chats : AppCompatActivity() {
         txtNombre.text = contacto!!.nombre
         Picasso.get().load(contacto!!.imagen).into(img_chat)
 
-        irRecyclerView()
 
+
+        //funcionalidad al textView mensaje
+
+        val txtMensaje = findViewById<TextView>(R.id.txt_mensaje_chats)
+
+        val btn_send = findViewById<ImageView>(R.id.btn_enviar)
+
+        btn_send.setOnClickListener {
+
+            mensajes.add(Mensaje(txtMensaje.text.toString(), "gracias por tu mensaje "))
+            txtMensaje.text = ""
+            irRecyclerView()
+        }
+
+        irRecyclerView()
     }
 
     fun irRecyclerView(){
