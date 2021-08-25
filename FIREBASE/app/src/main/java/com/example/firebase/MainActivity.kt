@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         //obtener el ID del usuario
         val usuarioLogueado = FirebaseAuth
             .getInstance()
-            .currentUser
+            .getCurrentUser()
 
         if(usuario.email != null && usuarioLogueado != null){
             // roles : ["usuario : "admin" ]
@@ -86,7 +86,9 @@ class MainActivity : AppCompatActivity() {
             )
             val identificadorUsuario = usuario.email
             db.collection("usuario")
-                //.add(nuevoUsuario) -> el firestore nos asigna el identificador
+            // el firestore nos asigna el identificador
+                //.add(nuevoUsuario)
+               //forma b en dodne se enera el id por parte del usuario
                 .document(identificadorUsuario.toString())
                 .set(nuevoUsuario)
 
@@ -100,8 +102,5 @@ class MainActivity : AppCompatActivity() {
             Log.i("firebase-login", "ERROR !!")
         }
     }
-
-
-
 
 }
