@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DRestaurante">
+
+    <EditText
+        android:id="@+id/txt_restaurante_nombre"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="140dp"
+        android:ems="10"
+        android:hint="nombre restaurante"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_crear_restaurante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:text="CREAR RESTAURANTE"
+        app:layout_constraintEnd_toEndOf="@+id/txt_restaurante_nombre"
+        app:layout_constraintStart_toStartOf="@+id/txt_restaurante_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/txt_restaurante_nombre" />
+</androidx.constraintlayout.widget.ConstraintLayout>

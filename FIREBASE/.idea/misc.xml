@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/flaco/Documents/OCTAVO SEMESTRE/APLICACIONES MOVILES/REPO_GIT_FINAL/moviles_computacion_Proanio_Morales_Billy_Orlando/FIREBASE/app/src/main/res/layout/activity_main.xml" value="0.29375" />
+        <entry key="app/src/main/res/layout/activity_cproducto.xml" value="0.26358695652173914" />
+        <entry key="app/src/main/res/layout/activity_drestaurante.xml" value="0.26358695652173914" />
+        <entry key="app/src/main/res/layout/activity_eordenes.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26766304347826086" />
       </map>
     </option>
   </component>

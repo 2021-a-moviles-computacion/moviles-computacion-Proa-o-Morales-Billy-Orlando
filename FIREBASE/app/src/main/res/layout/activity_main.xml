@@ -10,11 +10,69 @@
         android:id="@+id/bt_login"
         android:layout_width="115dp"
         android:layout_height="54dp"
+        android:layout_marginStart="16dp"
         android:text="LOGIN"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.084" />
+
+    <TextView
+        android:id="@+id/txt_Bienvenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:text="Ingresa al sistema "
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toEndOf="@+id/bt_login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <Button
+        android:id="@+id/bt_producto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:text="PRODUCTO"
+        app:layout_constraintEnd_toEndOf="@+id/txt_Bienvenida"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="@+id/bt_login"
+        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
+
+    <Button
+        android:id="@+id/btn_restauramte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="RESTAURANTE"
+        app:layout_constraintEnd_toEndOf="@+id/bt_producto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_producto"
+        app:layout_constraintTop_toBottomOf="@+id/bt_producto" />
+
+    <Button
+        android:id="@+id/btn_ordenes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="ORDENES"
+        app:layout_constraintEnd_toEndOf="@+id/btn_restauramte"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_restauramte"
+        app:layout_constraintTop_toBottomOf="@+id/btn_restauramte" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="358dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="136dp"
+        android:text="LOG OUT"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ordenes"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="@+id/btn_ordenes"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ordenes" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
