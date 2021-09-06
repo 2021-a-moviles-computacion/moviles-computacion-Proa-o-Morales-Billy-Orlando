@@ -58,7 +58,7 @@ class EOrdenes : AppCompatActivity() {
         val btnAnadir = findViewById<Button>(R.id.btn_anadir_lista_productos)
 
         btnAnadir.setOnClickListener {
-            cargarListaDeProductps()
+            cargarListaDeProductos()
         }
 
 
@@ -140,19 +140,16 @@ class EOrdenes : AppCompatActivity() {
                 }
     }
 
-    fun cargarListaDeProductps(){
+    fun cargarListaDeProductos(){
 
         val listViewProductos = findViewById<ListView>(R.id.list_view_productos)
-        //val arregloPrueba = arrayListOf<String>()
-
         val adaptadorOrden = ArrayAdapter(this,android.R.layout.simple_selectable_list_item, arregloOrdenes)
         val txtCantidad = findViewById<TextView>(R.id.txt_cantidad)
         val txtTotal = findViewById<TextView>(R.id.txt_total)
-        var totalUnitario: Double
+
         var precioUnitario: Double = produtcSeleccionado!!.precioProductp
         val cantidad = txtCantidad.text.toString().toInt()
-        totalUnitario = precioUnitario * cantidad
-
+        var totalUnitario = precioUnitario * cantidad
         val totalMostar = String.format("%.2f", totalUnitario)
         var totalOrden = 0.0
 
@@ -161,7 +158,7 @@ class EOrdenes : AppCompatActivity() {
         listViewProductos.adapter = adaptadorOrden
 
         arregloOrdenes.add(OrdenDTO(produtcSeleccionado!!.nombreCProducto, produtcSeleccionado!!.precioProductp, txtCantidad.text.toString().toInt(), totalMostar.toDouble()))
-        //arregloPrueba.add(txtCantidad.text.toString())
+
         txtCantidad.text = ""
 
         if(arregloOrdenes != null){
