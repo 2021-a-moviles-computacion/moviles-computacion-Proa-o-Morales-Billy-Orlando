@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import com.example.firebase.dto.FirestoreProductoDTO
 import com.example.firebase.dto.FirestoreRestauranteDTO
+import com.example.firebase.dto.OrdenDTO
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -21,6 +20,8 @@ class EOrdenes : AppCompatActivity() {
     var arregloRestaurantes = arrayListOf<FirestoreRestauranteDTO>()
     var adapterRestaurante: ArrayAdapter<FirestoreRestauranteDTO>? = null
     var restauranteSeleccionado: FirestoreRestauranteDTO? = null
+
+    var arregloOrdenes = arrayListOf<OrdenDTO>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,17 @@ class EOrdenes : AppCompatActivity() {
             adapterProductos?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             cargarProductos()
         }
+
+        //CARGAR PRODUCTOS AL LIST VIEW
+
+
+        val btnAnadir = findViewById<Button>(R.id.btn_anadir_lista_productos)
+
+        btnAnadir.setOnClickListener {
+            cargarListaDeProductps()
+        }
+
+
     }
 
 
@@ -80,6 +92,8 @@ class EOrdenes : AppCompatActivity() {
                 for (document in it){
                     var restaurante = document.toObject(FirestoreRestauranteDTO::class.java)
                     restaurante!!.uid = document.id
+                    restaurante!!.nombreRestaurante = document.get("nombre").toString()
+
                     arregloRestaurantes.add(restaurante)
                     adapterRestaurante?.notifyDataSetChanged()
                 }
@@ -115,7 +129,8 @@ class EOrdenes : AppCompatActivity() {
                     for (document in it){
                         var producto = document.toObject(FirestoreProductoDTO::class.java)
                         producto!!.uid = document.id
-
+                        producto!!.nombreCProducto = document.get("nombre").toString()
+                        producto!!.precioProductp = document.get("precio").toString().toDouble()
                         arregloProductos.add(producto)
                         adapterProductos?.notifyDataSetChanged()
                     }
@@ -125,5 +140,37 @@ class EOrdenes : AppCompatActivity() {
                 }
     }
 
+    fun cargarListaDeProductps(){
+
+        val listViewProductos = findViewById<ListView>(R.id.list_view_productos)
+        //val arregloPrueba = arrayListOf<String>()
+
+        val adaptadorOrden = ArrayAdapter(this,android.R.layout.simple_selectable_list_item, arregloOrdenes)
+        val txtCantidad = findViewById<TextView>(R.id.txt_cantidad)
+        val txtTotal = findViewById<TextView>(R.id.txt_total)
+        var totalUnitario: Double
+        var precioUnitario: Double = produtcSeleccionado!!.precioProductp
+        val cantidad = txtCantidad.text.toString().toInt()
+        totalUnitario = precioUnitario * cantidad
+
+        val totalMostar = String.format("%.2f", totalUnitario)
+        var totalOrden = 0.0
+
+
+
+        listViewProductos.adapter = adaptadorOrden
+
+        arregloOrdenes.add(OrdenDTO(produtcSeleccionado!!.nombreCProducto, produtcSeleccionado!!.precioProductp, txtCantidad.text.toString().toInt(), totalMostar.toDouble()))
+        //arregloPrueba.add(txtCantidad.text.toString())
+        txtCantidad.text = ""
+
+        if(arregloOrdenes != null){
+            totalOrden  = arregloOrdenes.map { it!!.totalUnitario}
+                .fold(0.0) { acumulador, totalUnitarioSuma -> (acumulador + totalUnitarioSuma) }.toDouble()
+        }
+
+        txtTotal.text = "Total Orden $${totalOrden.toString()}"
+        adaptadorOrden.notifyDataSetChanged()
+    }
 
 }
