@@ -54,7 +54,6 @@ class EOrdenes : AppCompatActivity() {
 
         //CARGAR PRODUCTOS AL LIST VIEW
 
-
         val btnAnadir = findViewById<Button>(R.id.btn_anadir_lista_productos)
 
         btnAnadir.setOnClickListener {

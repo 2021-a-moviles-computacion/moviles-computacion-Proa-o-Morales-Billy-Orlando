@@ -20,12 +20,13 @@
         android:id="@+id/txt_nombreProducto"
         android:layout_width="312dp"
         android:layout_height="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="Noimbre Producto"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

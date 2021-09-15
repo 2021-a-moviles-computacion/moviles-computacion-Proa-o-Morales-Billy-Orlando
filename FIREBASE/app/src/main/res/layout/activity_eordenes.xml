@@ -19,8 +19,8 @@
 
     <Spinner
         android:id="@+id/sp_restaurante"
-        android:layout_width="205dp"
-        android:layout_height="60dp"
+        android:layout_width="230dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.109"
@@ -30,11 +30,11 @@
 
     <Spinner
         android:id="@+id/sp_producto"
-        android:layout_width="205dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="226dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/sp_restaurante"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/sp_restaurante"
         app:layout_constraintTop_toBottomOf="@+id/sp_restaurante"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -43,24 +43,24 @@
         android:id="@+id/btn_anadir_lista_productos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="8dp"
         android:text="ADD"
         app:layout_constraintBottom_toBottomOf="@+id/sp_producto"
         app:layout_constraintStart_toEndOf="@+id/sp_producto"
         app:layout_constraintTop_toBottomOf="@+id/sp_restaurante"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txt_cantidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="cantidad Productos"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_anadir_lista_productos"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="@+id/sp_producto"
         app:layout_constraintTop_toBottomOf="@+id/sp_producto" />
 
@@ -68,17 +68,17 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:text="Lista de productos "
         app:layout_constraintEnd_toEndOf="@+id/txt_cantidad"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="@+id/txt_cantidad"
         app:layout_constraintTop_toBottomOf="@+id/txt_cantidad" />
 
     <ListView
         android:id="@+id/list_view_productos"
-        android:layout_width="364dp"
-        android:layout_height="200dp"
+        android:layout_width="333dp"
+        android:layout_height="146dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -89,10 +89,10 @@
         android:id="@+id/btn_confirmar_pedido"
         android:layout_width="357dp"
         android:layout_height="53dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:text="CONFIRMAR PEDIDO"
         app:layout_constraintEnd_toEndOf="@+id/list_view_productos"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="@+id/list_view_productos"
         app:layout_constraintTop_toBottomOf="@+id/txt_total" />
 

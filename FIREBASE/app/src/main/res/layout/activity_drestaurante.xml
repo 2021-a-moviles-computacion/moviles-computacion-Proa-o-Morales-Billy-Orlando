@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".DRestaurante">
 
+    <Button
+        android:id="@+id/btn_consultar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="CONSULTAR"
+        app:layout_constraintEnd_toEndOf="@+id/btn_datos_prueba"
+        app:layout_constraintStart_toStartOf="@+id/btn_datos_prueba"
+        app:layout_constraintTop_toBottomOf="@+id/btn_datos_prueba" />
+
     <EditText
         android:id="@+id/txt_restaurante_nombre"
         android:layout_width="240dp"
         android:layout_height="48dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="88dp"
         android:ems="10"
         android:hint="nombre restaurante"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,4 +38,15 @@
         app:layout_constraintEnd_toEndOf="@+id/txt_restaurante_nombre"
         app:layout_constraintStart_toStartOf="@+id/txt_restaurante_nombre"
         app:layout_constraintTop_toBottomOf="@+id/txt_restaurante_nombre" />
+
+    <Button
+        android:id="@+id/btn_datos_prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="DATOS PRUEBA"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_restaurante"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_restaurante"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crear_restaurante" />
 </androidx.constraintlayout.widget.ConstraintLayout>
