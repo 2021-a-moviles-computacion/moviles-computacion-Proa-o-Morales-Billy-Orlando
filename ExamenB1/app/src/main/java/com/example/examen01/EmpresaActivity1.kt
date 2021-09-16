@@ -8,20 +8,46 @@ import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.examen01.DTO.FirestoreEmpresaDto
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class EmpresaActivity1 : AppCompatActivity() {
 
     var posiconElementoSeleccionado = 0
-    val baseDatos = BaseDatos(this)
+   // val baseDatos = BaseDatos(this)
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 400
-    var adapter: ArrayAdapter<Empresa>? = null
+    var adapter: ArrayAdapter<FirestoreEmpresaDto>? = null
+    var arregloEmpresas = arrayListOf<FirestoreEmpresaDto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empresa1)
 
-        val arregloEmpresas =  baseDatos.consultarEmpresas()
+        //val arregloEmpresas =  baseDatos.consultarEmpresas()
        // Log.i("base-datos", "listaEmpresas ${arregloEmpresas[4]}")
+
+        val db = Firebase.firestore
+        val referencia = db.collection("empresa")
+
+        referencia
+            .get()
+            .addOnSuccessListener {
+                for (document in it){
+                    var empresa = document.toObject(FirestoreEmpresaDto::class.java)
+                    empresa!!.id = document.id
+                    empresa!!.razonSocial = document.get("razon-social").toString()
+                    empresa!!.ruc = document.get("ruc").toString()
+                    empresa!!.direccion = document.get("direccion").toString()
+                    empresa!!.telefono = document.get("telefono-ingreso").toString()
+
+                    arregloEmpresas.add(empresa)
+                    adapter?.notifyDataSetChanged()
+                }
+            }
+            .addOnFailureListener {
+                Log.i("firebase-firestore", "no se cargaron los datos al listView")
+            }
 
         adapter = ArrayAdapter(
             this,
@@ -67,13 +93,14 @@ class EmpresaActivity1 : AppCompatActivity() {
 
         posiconElementoSeleccionado = id
 
-        Log.i("list-view","onCreate ${id}")
-        Log.i("list-view","Usuario ${baseDatos.consultarEmpresas()[id].id}")
+       // Log.i("list-view","onCreate ${id}")
+       // Log.i("list-view","Usuario ${baseDatos.consultarEmpresas()[id].id}")
 
     }
 
+    /*
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        var idElemento = baseDatos.consultarEmpresas()[posiconElementoSeleccionado]
+       // var idElemento = baseDatos.consultarEmpresas()[posiconElementoSeleccionado]
         return when(item?.itemId){
             // Editar
             R.id.men_editar -> {
@@ -98,6 +125,8 @@ class EmpresaActivity1 : AppCompatActivity() {
             else -> super.onContextItemSelected(item)
         }
     }
+
+     */
 
     fun abrirActividadporId(
         clase: Class<*>,

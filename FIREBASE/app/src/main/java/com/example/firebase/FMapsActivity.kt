@@ -10,7 +10,10 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolygonOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 class FMapsActivity : AppCompatActivity() {
 
@@ -35,6 +38,33 @@ class FMapsActivity : AppCompatActivity() {
                 establecerConfiguracionMapa()
                 anadirMarcador(quicentro, "Quicentro")
                 moverCamara(quicentro, 17f)
+                //LINEA
+                val poliLinea = googleMap
+                    .addPolyline(
+                        PolylineOptions()
+                            .clickable(true)
+                            .add(
+                                LatLng(-0.1759187040647396, -78.48506472421384),
+                                LatLng(-0.17632468492901104, -78.48265589308046),
+                                LatLng(-0.17746143130181483, -78.4770533307815)
+                            )
+                    )
+                poliLinea.tag = "Linea-1"
+                //POLIGONO
+                val poligonoUno = googleMap
+                    .addPolygon(
+                        PolygonOptions()
+                            .clickable(true)
+                            .add(
+                                LatLng(-0.1771546902239471, -78.48344981495214),
+                                LatLng(-0.17968981486125768, -78.48269198043828),
+                                LatLng(-0.17710958124147777, -78.48142892291516)
+                            )
+                    )
+
+                poligonoUno.fillColor = -0xc771c4
+                poligonoUno.tag = "poligono -1"
+                escucharListeners()
             }
         }
 
@@ -44,38 +74,8 @@ class FMapsActivity : AppCompatActivity() {
             val zoom = 17f
 
             moverCamara(carolina, zoom)
-
-
-            //LIENA
-            val poliLinea = GoogleMap
-                .addPolyline(
-                    PolylineOptions()
-                        .clickable(true)
-                        .add(
-                            LatLng(-0.1759187040647396, -78.48506472421384),
-                            LatLng(-0.17632468492901104, -78.48265589308046),
-                            LatLng(-0.17746143130181483, -78.4770533307815)
-                        )
-                )
-            poliLinea.tag = "Linea-1"
-
-            //POLIGONO
-            val poligonoUno = GoogleMap
-                .addPolygon(
-                    PolygonOptions()
-                        .clickable(true)
-                        .add(
-                            LatLng(-0.1771546902239471, -78.48344981495214),
-                            LatLng(-0.17968981486125768, -78.48269198043828),
-                            LatLng(-0.17710958124147777, -78.48142892291516)
-                        )
-                )
-
-            poligonoUno.fillColor = -0xc771c4
-            poligonoUno.tag = "poligono -1"
-            escucharListeners()
-
         }
+
     }
 
     fun escucharListeners(){

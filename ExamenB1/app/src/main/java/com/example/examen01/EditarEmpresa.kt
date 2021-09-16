@@ -9,7 +9,7 @@ import android.widget.TextView
 class EditarEmpresa : AppCompatActivity() {
 
 
-    val baseDatos = BaseDatos(this)
+  //  val baseDatos = BaseDatos(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,7 @@ class EditarEmpresa : AppCompatActivity() {
         txtDireccion.text = empresa!!.direccion
         txtTelefono.text = empresa!!.telefono.toString()
 
+        /*
         val btn_editar_empresa = findViewById<ImageView>(R.id.img_view_guardar_editar)
         btn_editar_empresa.setOnClickListener {
             if(empresa!= null){
@@ -47,6 +48,8 @@ class EditarEmpresa : AppCompatActivity() {
             }
             abrirActividadEmpresaId(EmpresaActivity1::class.java)
         }
+
+         */
 
         val btn_cancelar = findViewById<ImageView>(R.id.img_view_cancelar_editar)
         btn_cancelar.setOnClickListener {

@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class CrearEmpleado : AppCompatActivity() {
 
     var posicionItemSelecionado = 0
-    val baseDatos = BaseDatos(this)
+    //val baseDatos = BaseDatos(this)
     var idEempresa = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +57,33 @@ class CrearEmpleado : AppCompatActivity() {
 
         val idEmpresaIngreso = idEempresa.toString()
 
+        val nuevoEmpresa = hashMapOf<String, Any>(
+            "dni" to dniIngreso,
+            "nombre-empleado" to nombreIngreso,
+            "fecha-nacimiento" to fechaNacIngreso,
+            "telefono-empleado" to telefonoIngreso,
+            "id-empresa" to idEmpresaIngreso
+        )
+        val db = Firebase.firestore
+        val referencia = db.collection("empresa")
 
-        if(baseDatos!= null) {
+        referencia
+            .add(nuevoEmpresa)
+            .addOnSuccessListener {
+                dni.text = ""
+                nombre.text = ""
+                fechaNac.text = ""
+                telefonoEmpl.text = ""
+                idEmpresa.text = ""
+
+                //abrirActividad(EmpresaActivity1::class.java)
+            }
+            .addOnFailureListener {
+                Log.i("firestore-empresa", "no se pudo cargar los datos al firestore ")
+            }
+
+        //FUNCION BASE DE DATOS
+        /*if(baseDatos!= null) {
             if( !nombreIngreso.isEmpty() && !fechaNacIngreso.isEmpty() && !fechaNacIngreso.isEmpty() && !telefonoIngreso.isEmpty() ){
 
                 baseDatos.crearEmpleadoFormulario(dniIngreso,nombreIngreso, fechaNacIngreso, telefonoIngreso.toInt(), idEmpresaIngreso.toInt())
@@ -74,6 +101,8 @@ class CrearEmpleado : AppCompatActivity() {
                 Log.i("base-datos", "llene los campos")
             }
         }
+
+         */
     }
 
     fun abrirActividad(

@@ -12,7 +12,7 @@ import android.widget.*
 class EmpleadoActivity : AppCompatActivity() {
 
     var posiconElementoSeleccionado = 0
-    val baseDatos = BaseDatos(this)
+    //val baseDatos = BaseDatos(this)
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 400
     var idEempresa = 0
     var idEmpleadoSeleccionado = 0
@@ -29,12 +29,12 @@ class EmpleadoActivity : AppCompatActivity() {
         val idEmpresa = findViewById<TextView>(R.id.txt_nombre_empresa_ven_empl)
         idEmpresa.text = empresa.razonSocial
 
-        val arregloEmpleados =  baseDatos.consultarEmpleadoPorIDEmpresa(idEempresa)
+      //  val arregloEmpleados =  baseDatos.consultarEmpleadoPorIDEmpresa(idEempresa)
 
         adpatador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            arregloEmpleados
+          //  arregloEmpleados
 
         )
 
@@ -70,6 +70,7 @@ class EmpleadoActivity : AppCompatActivity() {
 
     }
 
+    /*
     override fun onContextItemSelected(item: MenuItem): Boolean {
         var empleadoSel = baseDatos.consultarEmpleadoPorIDEmpresa(idEempresa)[posiconElementoSeleccionado]
         return when(item?.itemId){
@@ -91,6 +92,8 @@ class EmpleadoActivity : AppCompatActivity() {
             else -> super.onContextItemSelected(item)
         }
     }
+
+     */
 
     fun abrirActiviadEmpleado(
         clase: Class<*>,
