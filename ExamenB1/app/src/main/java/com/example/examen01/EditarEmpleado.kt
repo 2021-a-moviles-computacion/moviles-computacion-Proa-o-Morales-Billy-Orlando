@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.examen01.DTO.FirestoreEmpleadoDto
 
 class EditarEmpleado : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class EditarEmpleado : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_empleado)
 
-        val empleado = intent.getParcelableExtra<Empleado>("empleado")
+        val empleado = intent.getParcelableExtra<FirestoreEmpleadoDto>("empleado")
 
         Log.i("list-view", "Empleado pasado ${empleado!!}")
 

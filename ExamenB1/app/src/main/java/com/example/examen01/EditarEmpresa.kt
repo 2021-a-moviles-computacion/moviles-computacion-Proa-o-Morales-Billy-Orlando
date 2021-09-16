@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.examen01.DTO.FirestoreEmpresaDto
 
 class EditarEmpresa : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class EditarEmpresa : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_empresa)
 
-        val empresa = intent.getParcelableExtra<Empresa>("empresa")
+        val empresa = intent.getParcelableExtra<FirestoreEmpresaDto>("empresa")
 
         val txtID = findViewById<TextView>(R.id.txt_id_empresa_editar)
         val txtRuc = findViewById<TextView>(R.id.txt_ruc_editar)

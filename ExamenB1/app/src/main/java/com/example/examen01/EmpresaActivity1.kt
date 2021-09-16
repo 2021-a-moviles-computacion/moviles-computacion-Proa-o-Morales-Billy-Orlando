@@ -8,25 +8,59 @@ import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.examen01.DTO.FirestoreEmpleadoDto
 import com.example.examen01.DTO.FirestoreEmpresaDto
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EmpresaActivity1 : AppCompatActivity() {
 
-    var posiconElementoSeleccionado = 0
-   // val baseDatos = BaseDatos(this)
+    var empresaSeleccioanda: FirestoreEmpresaDto? = null
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 400
     var adapter: ArrayAdapter<FirestoreEmpresaDto>? = null
     var arregloEmpresas = arrayListOf<FirestoreEmpresaDto>()
+    var  posiconElementoSeleccionado: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empresa1)
 
-        //val arregloEmpresas =  baseDatos.consultarEmpresas()
-       // Log.i("base-datos", "listaEmpresas ${arregloEmpresas[4]}")
+        cargarEmpresas()
+        adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            arregloEmpresas
+        )
 
+        val listViewEmpresa = findViewById<ListView>(R.id.list_view_epleados)
+        listViewEmpresa.adapter = adapter
+        listViewEmpresa.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long)
+                {
+                    empresaSeleccioanda = arregloEmpresas[position]
+                }
+
+            override fun onNothingSelected(
+                p0: AdapterView<*>?)
+                {
+                    Log.i("firestore-empresa", "No ha seleccionado ningun item")
+                }
+        }
+
+        val btnCrearEmpresa = findViewById<Button>(R.id.btn_crear)
+        btnCrearEmpresa.setOnClickListener {
+            abrirActiviad(CrearEmpresa::class.java)
+        }
+
+        registerForContextMenu(listViewEmpresa)
+    }
+
+    fun cargarEmpresas(){
         val db = Firebase.firestore
         val referencia = db.collection("empresa")
 
@@ -48,23 +82,6 @@ class EmpresaActivity1 : AppCompatActivity() {
             .addOnFailureListener {
                 Log.i("firebase-firestore", "no se cargaron los datos al listView")
             }
-
-        adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            arregloEmpresas
-
-        )
-
-        val listViewEmpresa = findViewById<ListView>(R.id.list_view_epleados)
-        listViewEmpresa.adapter = adapter
-
-        val btnCrearEmpresa = findViewById<Button>(R.id.btn_crear)
-        btnCrearEmpresa.setOnClickListener {
-            abrirActiviad(CrearEmpresa::class.java)
-        }
-
-        registerForContextMenu(listViewEmpresa)
     }
 
     fun abrirActiviad(
@@ -91,22 +108,24 @@ class EmpresaActivity1 : AppCompatActivity() {
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
 
-        posiconElementoSeleccionado = id
+         posiconElementoSeleccionado = id
 
        // Log.i("list-view","onCreate ${id}")
        // Log.i("list-view","Usuario ${baseDatos.consultarEmpresas()[id].id}")
 
     }
 
-    /*
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
-       // var idElemento = baseDatos.consultarEmpresas()[posiconElementoSeleccionado]
+       var idElemento = arregloEmpresas[posiconElementoSeleccionado]
         return when(item?.itemId){
             // Editar
             R.id.men_editar -> {
                 abrirActividadporId(EditarEmpresa::class.java, idElemento)
                 return true
             }
+
+            /*
             //Eliinar
             R.id.men_eliminar -> {
                 Log.i("list-view", "Eliminar ${idElemento.id}")
@@ -117,6 +136,8 @@ class EmpresaActivity1 : AppCompatActivity() {
                 return true
             }
 
+             */
+
             R.id.men_ver_empleados -> {
                 abrirActividadporId(EmpleadoActivity::class.java, idElemento)
                 return true
@@ -126,11 +147,11 @@ class EmpresaActivity1 : AppCompatActivity() {
         }
     }
 
-     */
+
 
     fun abrirActividadporId(
         clase: Class<*>,
-        empresa: Empresa
+        empresa: FirestoreEmpresaDto
     ){
         val intentExplicito = Intent(
             this,

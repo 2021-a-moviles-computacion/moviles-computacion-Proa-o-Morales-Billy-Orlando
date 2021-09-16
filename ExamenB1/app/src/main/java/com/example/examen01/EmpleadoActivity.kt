@@ -8,38 +8,60 @@ import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.examen01.DTO.FirestoreEmpleadoDto
+import com.example.examen01.DTO.FirestoreEmpresaDto
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.protobuf.DescriptorProtos
 
 class EmpleadoActivity : AppCompatActivity() {
 
     var posiconElementoSeleccionado = 0
-    //val baseDatos = BaseDatos(this)
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 400
-    var idEempresa = 0
-    var idEmpleadoSeleccionado = 0
-    var adpatador: ArrayAdapter<Empleado>? = null
+    var idEempresa: String? = ""
+    var empresaSeleccioanda: FirestoreEmpleadoDto? = null
+    var adpatador: ArrayAdapter<FirestoreEmpleadoDto>? = null
+    var arregloEmpleados = arrayListOf<FirestoreEmpleadoDto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empleado)
 
-        val empresa = intent.getParcelableExtra<Empresa>("empresa")
-
+        //CARGAR INFORMACION DE EMPRESA DEL EMPLEADO
+        val empresa = intent.getParcelableExtra<FirestoreEmpresaDto>("empresa")
         idEempresa = empresa!!.id
-
         val idEmpresa = findViewById<TextView>(R.id.txt_nombre_empresa_ven_empl)
         idEmpresa.text = empresa.razonSocial
 
-      //  val arregloEmpleados =  baseDatos.consultarEmpleadoPorIDEmpresa(idEempresa)
 
+
+        cargarEmpleado(idEempresa!!)
         adpatador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-          //  arregloEmpleados
+            arregloEmpleados
 
         )
 
         val listViewEmpleados = findViewById<ListView>(R.id.list_view_epleados)
         listViewEmpleados.adapter = adpatador
+        listViewEmpleados.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long)
+            {
+                empresaSeleccioanda = arregloEmpleados[position]
+            }
+
+            override fun onNothingSelected(
+                p0: AdapterView<*>?)
+            {
+                Log.i("firestore-empresa", "No ha seleccionado ningun item")
+            }
+        }
+
 
         registerForContextMenu(listViewEmpleados)
 
@@ -50,6 +72,32 @@ class EmpleadoActivity : AppCompatActivity() {
 
     }
 
+    fun cargarEmpleado(idEmpresa: String){
+        val db = Firebase.firestore
+        val referencia = db.collection("empleado")
+
+        referencia
+            .whereEqualTo("id-empresa", idEmpresa)
+            .get()
+            .addOnSuccessListener {
+                for (document in it){
+                   // Log.i("EMPRESA-SELECCIONADA-CARGA ", "${idEmpresa}")
+                    var empleado = document.toObject(FirestoreEmpleadoDto::class.java)
+                    empleado!!.id = document.id
+                    empleado!!.dni = document.get("dni").toString()
+                    empleado!!.fechaNacimiento = document.get("fecha-nacimiento").toString()
+                    empleado!!.nombre = document.get("nombre-empleado").toString()
+                    empleado!!.telefono = document.get("telefono-empleado").toString()
+
+                    arregloEmpleados.add(empleado)
+                    adpatador?.notifyDataSetChanged()
+                }
+            }
+            .addOnFailureListener {
+                Log.i("NO INGRESO AL ADD ON SUCCES FILE LISTENER  ", "${idEmpresa}")
+            }
+
+    }
 
     override fun onCreateContextMenu(
         menu: ContextMenu?,
@@ -70,9 +118,9 @@ class EmpleadoActivity : AppCompatActivity() {
 
     }
 
-    /*
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        var empleadoSel = baseDatos.consultarEmpleadoPorIDEmpresa(idEempresa)[posiconElementoSeleccionado]
+        var empleadoSel = arregloEmpleados[posiconElementoSeleccionado]
         return when(item?.itemId){
             // Editar
             R.id.men_editar_empleado -> {
@@ -80,6 +128,7 @@ class EmpleadoActivity : AppCompatActivity() {
                 abrirActiviadEmpleado(EditarEmpleado::class.java, empleadoSel)
                 return true
             }
+            /*
             //Eliinar
             R.id.men_eliminar_empleado -> {
                 Log.i("list-view", "Eliminar ${empleadoSel} ")
@@ -89,15 +138,17 @@ class EmpleadoActivity : AppCompatActivity() {
                 return true
             }
 
+             */
+
             else -> super.onContextItemSelected(item)
         }
     }
 
-     */
+
 
     fun abrirActiviadEmpleado(
         clase: Class<*>,
-        empleado: Empleado
+        empleado: FirestoreEmpleadoDto
     ){
         val intentExplicito = Intent(
             this,
@@ -109,7 +160,7 @@ class EmpleadoActivity : AppCompatActivity() {
 
     fun abrirActiviad(
         clase: Class<*>,
-        empresa: Empresa
+        empresa: FirestoreEmpresaDto
     ){
         val intentExplicito = Intent(
             this,

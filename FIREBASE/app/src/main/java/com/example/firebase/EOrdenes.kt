@@ -30,7 +30,6 @@ class EOrdenes : AppCompatActivity() {
 
         // cargar spinner de restaurantes
         if(adapterRestaurante == null){
-
             adapterRestaurante = ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -39,7 +38,6 @@ class EOrdenes : AppCompatActivity() {
             adapterRestaurante?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             cargarRestaurantes()
         }
-
         //caragr spiner de productos
         if(adapterProductos == null){
 
@@ -51,11 +49,8 @@ class EOrdenes : AppCompatActivity() {
             adapterProductos?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             cargarProductos()
         }
-
         //CARGAR PRODUCTOS AL LIST VIEW
-
         val btnAnadir = findViewById<Button>(R.id.btn_anadir_lista_productos)
-
         btnAnadir.setOnClickListener {
             cargarListaDeProductos()
         }

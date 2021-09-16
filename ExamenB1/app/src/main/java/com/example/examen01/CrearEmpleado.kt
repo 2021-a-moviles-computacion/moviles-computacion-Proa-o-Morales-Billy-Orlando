@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.examen01.DTO.FirestoreEmpresaDto
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -13,13 +14,13 @@ class CrearEmpleado : AppCompatActivity() {
 
     var posicionItemSelecionado = 0
     //val baseDatos = BaseDatos(this)
-    var idEempresa = 0
+    var idEempresa: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_editar_empleado)
 
-        val empresa = intent.getParcelableExtra<Empresa>("empresa")
+        val empresa = intent.getParcelableExtra<FirestoreEmpresaDto>("empresa")
 
         idEempresa = empresa!!.id
 
@@ -65,7 +66,7 @@ class CrearEmpleado : AppCompatActivity() {
             "id-empresa" to idEmpresaIngreso
         )
         val db = Firebase.firestore
-        val referencia = db.collection("empresa")
+        val referencia = db.collection("empleado")
 
         referencia
             .add(nuevoEmpresa)
