@@ -144,6 +144,11 @@ class EmpleadoActivity : AppCompatActivity() {
                 return true
             }
 
+            R.id.men_ver_mapa -> {
+                abrirActiviadSola(Mapas::class.java)
+                return true
+            }
+
 
 
             else -> super.onContextItemSelected(item)
@@ -174,6 +179,16 @@ class EmpleadoActivity : AppCompatActivity() {
         )
         intentExplicito.putExtra("empresa", empresa)
         startActivityForResult(intentExplicito, CODIGO_RESPUESTA_INTENT_EXPLICITO)
+    }
+
+    fun abrirActiviadSola(
+        clase: Class<*>
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase
+        )
+        startActivity(intentExplicito)
     }
 
 
