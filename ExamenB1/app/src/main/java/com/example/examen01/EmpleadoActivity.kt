@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import com.example.examen01.DTO.FirestoreEmpleadoDto
 import com.example.examen01.DTO.FirestoreEmpresaDto
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.protobuf.DescriptorProtos
@@ -32,7 +33,6 @@ class EmpleadoActivity : AppCompatActivity() {
         idEempresa = empresa!!.id
         val idEmpresa = findViewById<TextView>(R.id.txt_nombre_empresa_ven_empl)
         idEmpresa.text = empresa.razonSocial
-
 
 
         cargarEmpleado(idEempresa!!)
@@ -128,17 +128,23 @@ class EmpleadoActivity : AppCompatActivity() {
                 abrirActiviadEmpleado(EditarEmpleado::class.java, empleadoSel)
                 return true
             }
-            /*
+
             //Eliinar
             R.id.men_eliminar_empleado -> {
                 Log.i("list-view", "Eliminar ${empleadoSel} ")
-                baseDatos.eliminarEmpleadoPorId(empleadoSel.id)
-                adpatador?.remove(adpatador!!.getItem(posiconElementoSeleccionado))
-                adpatador?.notifyDataSetChanged()
+                val db = FirebaseFirestore.getInstance()
+                db.collection("empleado")
+                    .document(empleadoSel.id!!)
+                    .delete()
+                    .addOnSuccessListener {
+                        adpatador?.remove(adpatador!!.getItem(posiconElementoSeleccionado))
+                        adpatador?.notifyDataSetChanged()
+                    }
+
                 return true
             }
 
-             */
+
 
             else -> super.onContextItemSelected(item)
         }

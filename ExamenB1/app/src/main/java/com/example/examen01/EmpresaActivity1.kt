@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import com.example.examen01.DTO.FirestoreEmpleadoDto
 import com.example.examen01.DTO.FirestoreEmpresaDto
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -125,18 +126,20 @@ class EmpresaActivity1 : AppCompatActivity() {
                 return true
             }
 
-            /*
             //Eliinar
             R.id.men_eliminar -> {
                 Log.i("list-view", "Eliminar ${idElemento.id}")
-                Log.i("bdd", "${baseDatos.consultarEmpresas().toString()}")
-                    baseDatos.eliminarEmpresa(idElemento.id)
-                    adapter?.remove(adapter!!.getItem(posiconElementoSeleccionado))
-                    adapter?.notifyDataSetChanged()
+                   val db = FirebaseFirestore.getInstance()
+                    db.collection("empresa")
+                        .document(idElemento.id!!)
+                        .delete()
+                        .addOnSuccessListener {
+                            abrirActiviad(EmpresaActivity1::class.java)
+                        }
                 return true
             }
 
-             */
+
 
             R.id.men_ver_empleados -> {
                 abrirActividadporId(EmpleadoActivity::class.java, idElemento)
