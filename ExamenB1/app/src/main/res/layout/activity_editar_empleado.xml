@@ -7,17 +7,43 @@
     tools:context=".EditarEmpleado">
 
     <EditText
+        android:id="@+id/txt_longitud_emp"
+        android:layout_width="122dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:ems="10"
+        android:hint="LONG."
+        android:inputType="textPersonName"
+        android:translationX="-15dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_telefono_emp_editar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_emp_editar" />
+
+    <EditText
+        android:id="@+id/txt_latitud_emp"
+        android:layout_width="122dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="LAT."
+        android:inputType="textPersonName"
+        android:translationX="-20dp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_longitud_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_emp_editar" />
+
+    <EditText
         android:id="@+id/txt_dni_editar"
         android:layout_width="311dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/empleado_dni"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_id_empleado_editar" />
 
@@ -55,7 +81,7 @@
         android:id="@+id/txt_telefono_emp_editar"
         android:layout_width="311dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/empleado_telefono"
         android:inputType="textPersonName"
@@ -68,35 +94,48 @@
 
     <ImageView
         android:id="@+id/img_view_guardar_emp_editar"
-        android:layout_width="64dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/img_view_cancelar_emp_editar"
-        app:layout_constraintHorizontal_bias="0.291"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_emp_editar"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="@+id/txt_latitud_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_id_empresa_empl"
         app:srcCompat="@mipmap/save" />
 
     <ImageView
         android:id="@+id/img_view_cancelar_emp_editar"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_emp_editar"
+        android:layout_width="56dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_longitud_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_id_empresa_empl"
         app:srcCompat="@mipmap/cancel" />
 
     <TextView
         android:id="@+id/txt_id_empleado_editar"
         android:layout_width="76dp"
         android:layout_height="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:hint="0"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_id_empresa_empl"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="ID Empresa"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_longitud_emp"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintStart_toStartOf="@+id/txt_latitud_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_latitud_emp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

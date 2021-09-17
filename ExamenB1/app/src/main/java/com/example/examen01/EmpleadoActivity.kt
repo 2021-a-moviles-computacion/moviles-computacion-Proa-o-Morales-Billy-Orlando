@@ -90,6 +90,7 @@ class EmpleadoActivity : AppCompatActivity() {
                     empleado!!.telefono = document.get("telefono-empleado").toString()
                     empleado!!.latitud = document.get("latitud").toString()
                     empleado!!.longitud = document.get("longitud").toString()
+                    empleado!!.idEmpresa = document.get("id-empresa").toString()
 
                     arregloEmpleados.add(empleado)
                     adpatador?.notifyDataSetChanged()

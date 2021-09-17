@@ -57,7 +57,6 @@ class CrearEmpleado : AppCompatActivity() {
         val telefonoIngreso = telefonoEmpl.text.toString()
         val latEmpleadoIngreso = latEmpleado.text.toString()
         val longempleadoIngreso = longEmpleado.text.toString()
-
         val idEmpresaIngreso = idEempresa.toString()
 
         val nuevoEmpresa = hashMapOf<String, Any>(
@@ -65,9 +64,9 @@ class CrearEmpleado : AppCompatActivity() {
             "nombre-empleado" to nombreIngreso,
             "fecha-nacimiento" to fechaNacIngreso,
             "telefono-empleado" to telefonoIngreso,
-            "id-empresa" to idEmpresaIngreso,
             "latitud" to latEmpleadoIngreso,
             "longitud" to longempleadoIngreso,
+            "id-empresa" to idEmpresaIngreso,
         )
         val db = Firebase.firestore
         val referencia = db.collection("empleado")
@@ -82,7 +81,6 @@ class CrearEmpleado : AppCompatActivity() {
                 idEmpresa.text = ""
                 latEmpleado.text = ""
                 longEmpleado.text = ""
-
                 //abrirActividad(EmpresaActivity1::class.java)
             }
             .addOnFailureListener {

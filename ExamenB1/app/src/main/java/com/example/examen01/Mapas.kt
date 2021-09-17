@@ -26,10 +26,10 @@ class Mapas : AppCompatActivity() {
 
 
         Log.i("RECIBIENDO EL EMPLEADO", "lATITUD ${empleado!!.longitud}")
-        Log.i("RECIBIENDO EL EMPLEADO", "lONGITUD ${empleado!!.idEmpresa}")
+        Log.i("RECIBIENDO EL EMPLEADO", "lONGITUD ${empleado!!.latitud}")
 
         var latitud = empleado!!.longitud.toString().toDouble()
-        var longitUd = empleado!!.idEmpresa.toString().toDouble()
+        var longitUd = empleado!!.latitud.toString().toDouble()
 
 
         //Log.i("TREAR UBICACION", "LATITUD ${latitud}")

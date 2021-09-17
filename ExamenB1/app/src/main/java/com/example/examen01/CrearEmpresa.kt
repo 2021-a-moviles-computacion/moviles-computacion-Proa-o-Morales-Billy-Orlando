@@ -32,7 +32,6 @@ class CrearEmpresa : AppCompatActivity() {
     }
 
 
-
     fun crearEmpresa(){
 
         val ruc = findViewById<TextView>(R.id.txt_ruc)
