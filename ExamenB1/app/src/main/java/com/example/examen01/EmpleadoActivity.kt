@@ -88,6 +88,8 @@ class EmpleadoActivity : AppCompatActivity() {
                     empleado!!.fechaNacimiento = document.get("fecha-nacimiento").toString()
                     empleado!!.nombre = document.get("nombre-empleado").toString()
                     empleado!!.telefono = document.get("telefono-empleado").toString()
+                    empleado!!.latitud = document.get("latitud").toString()
+                    empleado!!.longitud = document.get("longitud").toString()
 
                     arregloEmpleados.add(empleado)
                     adpatador?.notifyDataSetChanged()
@@ -124,11 +126,10 @@ class EmpleadoActivity : AppCompatActivity() {
         return when(item?.itemId){
             // Editar
             R.id.men_editar_empleado -> {
-                Log.i("list-view", "Editarr ${empleadoSel} ")
+                Log.i("list-view", "Editar ${empleadoSel} ")
                 abrirActiviadEmpleado(EditarEmpleado::class.java, empleadoSel)
                 return true
             }
-
             //Eliinar
             R.id.men_eliminar_empleado -> {
                 Log.i("list-view", "Eliminar ${empleadoSel} ")
@@ -143,19 +144,13 @@ class EmpleadoActivity : AppCompatActivity() {
 
                 return true
             }
-
             R.id.men_ver_mapa -> {
-                abrirActiviadSola(Mapas::class.java)
+                abrirActiviadEmpleado(Mapas::class.java, empleadoSel)
                 return true
             }
-
-
-
             else -> super.onContextItemSelected(item)
         }
     }
-
-
 
     fun abrirActiviadEmpleado(
         clase: Class<*>,

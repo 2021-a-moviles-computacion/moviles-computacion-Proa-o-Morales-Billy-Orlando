@@ -50,11 +50,15 @@ class CrearEmpleado : AppCompatActivity() {
         val fechaNac = findViewById<TextView>(R.id.txt_fec_nac)
         val telefonoEmpl = findViewById<TextView>(R.id.txt_telefono_emp)
         val idEmpresa = findViewById<TextView>(R.id.txt_id_empresa_cre_empl)
+        val latEmpleado = findViewById<TextView>(R.id.txt_latitud)
+        val longEmpleado = findViewById<TextView>(R.id.txt_longitud)
 
         val dniIngreso = dni.text.toString()
         val nombreIngreso = nombre.text.toString()
         val fechaNacIngreso = fechaNac.text.toString()
         val telefonoIngreso = telefonoEmpl.text.toString()
+        val latEmpleadoIngreso = latEmpleado.text.toString()
+        val longempleadoIngreso = longEmpleado.text.toString()
 
         val idEmpresaIngreso = idEempresa.toString()
 
@@ -63,7 +67,9 @@ class CrearEmpleado : AppCompatActivity() {
             "nombre-empleado" to nombreIngreso,
             "fecha-nacimiento" to fechaNacIngreso,
             "telefono-empleado" to telefonoIngreso,
-            "id-empresa" to idEmpresaIngreso
+            "id-empresa" to idEmpresaIngreso,
+            "latitud" to latEmpleadoIngreso,
+            "longitud" to longempleadoIngreso,
         )
         val db = Firebase.firestore
         val referencia = db.collection("empleado")
@@ -76,6 +82,8 @@ class CrearEmpleado : AppCompatActivity() {
                 fechaNac.text = ""
                 telefonoEmpl.text = ""
                 idEmpresa.text = ""
+                latEmpleado.text = ""
+                longEmpleado.text = ""
 
                 //abrirActividad(EmpresaActivity1::class.java)
             }
@@ -83,27 +91,6 @@ class CrearEmpleado : AppCompatActivity() {
                 Log.i("firestore-empresa", "no se pudo cargar los datos al firestore ")
             }
 
-        //FUNCION BASE DE DATOS
-        /*if(baseDatos!= null) {
-            if( !nombreIngreso.isEmpty() && !fechaNacIngreso.isEmpty() && !fechaNacIngreso.isEmpty() && !telefonoIngreso.isEmpty() ){
-
-                baseDatos.crearEmpleadoFormulario(dniIngreso,nombreIngreso, fechaNacIngreso, telefonoIngreso.toInt(), idEmpresaIngreso.toInt())
-
-                Log.i("base-datos", "empresa ingresado ${nombreIngreso}")
-                dni.text = ""
-                nombre.text = ""
-                fechaNac.text = ""
-                telefonoEmpl.text = ""
-                idEmpresa.text = ""
-
-                abrirActividad(EmpresaActivity1::class.java)
-
-            } else {
-                Log.i("base-datos", "llene los campos")
-            }
-        }
-
-         */
     }
 
     fun abrirActividad(

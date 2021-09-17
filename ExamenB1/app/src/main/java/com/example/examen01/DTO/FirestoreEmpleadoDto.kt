@@ -9,6 +9,9 @@ class FirestoreEmpleadoDto (
     var nombre: String? = "",
     var telefono: String? ="",
     var fechaNacimiento: String? = "",
+    var latitud: String? = "",
+    var longitud: String? = "",
+
     var idEmpresa: String? = ""): Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -17,7 +20,9 @@ class FirestoreEmpleadoDto (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
     ) {
     }
 
@@ -28,7 +33,9 @@ class FirestoreEmpleadoDto (
                 "Nombre:  ${nombre} -" +
                 "Telefono: ${telefono} -" +
                 "fecha de nacimiento: ${fechaNacimiento} -" +
-                "ID Empresa: ${idEmpresa} "
+                "ID Empresa: ${idEmpresa} -" +
+                "Latiud: ${latitud} -" +
+                "Longitud ${longitud}"
 
     }
 
@@ -39,6 +46,8 @@ class FirestoreEmpleadoDto (
         parcel.writeString(telefono)
         parcel.writeString(fechaNacimiento)
         parcel.writeString(idEmpresa)
+        parcel.writeString(latitud)
+        parcel.writeString(longitud)
     }
 
     override fun describeContents(): Int {
