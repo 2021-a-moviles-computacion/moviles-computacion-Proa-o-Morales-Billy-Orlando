@@ -32,15 +32,13 @@ class CrearEmpleado : AppCompatActivity() {
 
         bt_crear_empleado.setOnClickListener {
             crearEmpleado()
+            abrirActividad(EmpresaActivity1::class.java)
         }
 
         val btn_cancelar = findViewById<ImageView>(R.id.img_view_cancelar_emp)
         btn_cancelar.setOnClickListener {
             abrirActividad(EmpresaActivity1::class.java)
         }
-
-
-
     }
 
 

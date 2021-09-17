@@ -62,35 +62,13 @@ class CrearEmpresa : AppCompatActivity() {
                 direccion.text = ""
                 telefono.text = ""
 
-                //abrirActividad(EmpresaActivity1::class.java)
+                abrirActividad(EmpresaActivity1::class.java)
+
             }
             .addOnFailureListener {
                 Log.i("firestore-empresa", "no se pudo cargar los datos al firestore ")
             }
 
-
-
-
-        //FUNCION QUE CARGABA A AL BASE DE DATOS
-        /*
-        if(baseDatos!= null) {
-            if( !razonSocialIngres.isEmpty() && !direccionIngreso.isEmpty() && !direccionIngreso.isEmpty() && !telefonoIngreso.isEmpty() ){
-
-                baseDatos.crearEmpresaFormulario(rucIngreso,razonSocialIngres, direccionIngreso, telefonoIngreso.toInt())
-
-                Log.i("base-datos", "empresa ingresado ${razonSocialIngres}")
-                ruc.text = ""
-                razonSocial.text = ""
-                direccion.text = ""
-                telefono.text = ""
-
-                abrirActividad(EmpresaActivity1::class.java)
-
-            } else {
-                Log.i("base-datos", "llene los campos")
-            }
-        }
-        */
 
     }
 

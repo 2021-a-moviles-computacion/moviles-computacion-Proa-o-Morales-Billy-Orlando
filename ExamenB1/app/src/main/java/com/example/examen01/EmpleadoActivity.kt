@@ -93,6 +93,7 @@ class EmpleadoActivity : AppCompatActivity() {
 
                     arregloEmpleados.add(empleado)
                     adpatador?.notifyDataSetChanged()
+
                 }
             }
             .addOnFailureListener {
